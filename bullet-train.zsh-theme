@@ -586,6 +586,11 @@ prompt_virtualenv() {
 
 # NVM: Node version manager
 prompt_nvm() {
+  # do not show node version, if not in nodejs project floder
+  if [ ! -f "package.json" ]; then
+    return
+  fi
+
   local nvm_prompt
   if type nvm >/dev/null 2>&1; then
     nvm_prompt=$(nvm current 2>/dev/null)
