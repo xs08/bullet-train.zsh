@@ -575,6 +575,9 @@ prompt_kctx() {
 
 # Virtualenv: current working virtualenv
 prompt_virtualenv() {
+  if [ -n "$DISABLE_VIRTUAL_ENV_PROMPT" ]; then
+    return
+  fi
   local virtualenv_path="$VIRTUAL_ENV"
   if [[ -n $virtualenv_path && -n $VIRTUAL_ENV_DISABLE_PROMPT ]]; then
     prompt_segment $BULLETTRAIN_VIRTUALENV_BG $BULLETTRAIN_VIRTUALENV_FG $BULLETTRAIN_VIRTUALENV_PREFIX" $(basename $virtualenv_path)"
